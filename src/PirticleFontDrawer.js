@@ -1,4 +1,4 @@
-import { randomNumberCreator } from './RandomNumberCreator.js';
+import { randomNumberCreator } from './randomNumberCreator.js';
 import { particleUtils } from './particleUtils.js';
 import { FontCanvas } from './FontCanvas.js';
 import { Dot } from './Dot.js'; 
