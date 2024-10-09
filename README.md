@@ -1,1 +1,3 @@
-# particle-font-drawer
+# Particle Font Drawer
+
+フォントをキャンバス上に描画し、それに基づいてパーティクルをレンダリングするシステム。
