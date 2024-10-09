@@ -1,0 +1,17 @@
+{
+  "name": "particle-font-drawer",
+  "version": "1.0.0",
+  "description": "A particle font drawer system.",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "build": "webpack", 
+    "test": "echo \"No tests specified\""
+  },
+  "keywords": ["particle", "font", "canvas", "drawer"],
+  "author": "hazukit",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
