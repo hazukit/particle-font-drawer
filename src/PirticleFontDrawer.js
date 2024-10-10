@@ -2,6 +2,7 @@ import { randomNumberCreator } from './randomNumberCreator.js';
 import { particleUtils } from './particleUtils.js';
 import { FontCanvas } from './FontCanvas.js';
 import { Dot } from './Dot.js'; 
+import { InputHandler } from './InputHandler.js'; 
 
 // パーティクルでフォントを描画するクラス
 export class PirticleFontDrawer {
@@ -106,23 +107,14 @@ export class PirticleFontDrawer {
   // アニメーションの開始設定
   startAnimation() {
     requestAnimationFrame(this.tick.bind(this));
-    this.setupEvents();
-  }
-
-  // イベントの設定
-  setupEvents() {
-    this.canvas.addEventListener('mousemove', this.onMouseMove.bind(this), false);
-    this.canvas.addEventListener('mouseout', this.onMouseOut.bind(this), false);
-    if (this.isClickedDamp) {
-      this.canvas.addEventListener('mousedown', this.onMouseDown.bind(this), false);
-    }
+    const inputHandler = new InputHandler(this.canvas, this.onMouseMove.bind(this), this.onMouseDown.bind(this), null, this.onMouseOut.bind(this));
   }
 
   // マウスの移動イベント
-  onMouseMove(evt) {
-    const rect = this.canvas.getBoundingClientRect();
-    this.mouseX = evt.clientX - rect.left;
-    this.mouseY = evt.clientY - rect.top;
+  onMouseMove(x, y) {
+    this.mouseX = x,
+    this.mouseY = y;
+//    console.log(`M X=${this.mouseX}, Y=${this.mouseY}`);
   }
 
   // マウスがキャンバス外に出たとき
@@ -132,8 +124,10 @@ export class PirticleFontDrawer {
   }
 
   // マウスのクリックイベント
-  onMouseDown() {
-    this.isMouseDown = true;
+  onMouseDown(x, y) {
+    this.mouseX = x,
+    this.mouseY = y;
+    if (this.isClickedDamp) this.isMouseDown = true;
   }
 
   // アニメーションの描画ループ
