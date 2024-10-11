@@ -13,21 +13,20 @@
     import { FontCanvas } from '../src/FontCanvas.js';
     import { PirticleFontDrawer } from '../src/PirticleFontDrawer.js';
 
-    function init() {
-      new PirticleFontDrawer('top_canvas1', 'Click Here', {
-        fontStyles: {'font-family':'Times New Roman', 'font-size': '100px'}
-      });
-      new PirticleFontDrawer('top_canvas2', 'Web Font', {
-        fontStyles: {'font-family':'Candal', 'font-size': '100px'},
-        fontUrl: 'https://fonts.googleapis.com/css?family=Candal',
-        textColor: '87ceeb',
-        firstBound: false
-      });
-      new PirticleFontDrawer('top_canvas3', 'Iron Sand', {
-        fontStyles: {'font-family':'Times New Roman', 'font-size': '100px'},
-        textureUrl: 'img/bg.jpg'
-      });
-      new PirticleFontDrawer('top_canvas4', '　吾輩は猫である。\n\
+    new PirticleFontDrawer('top_canvas1', 'Click Here', {
+      fontStyles: {'font-family':'Times New Roman', 'font-size': '100px'}
+    });
+    new PirticleFontDrawer('top_canvas2', 'Web Font', {
+      fontStyles: {'font-family':'Candal', 'font-size': '100px'},
+      fontUrl: 'https://fonts.googleapis.com/css?family=Candal',
+      textColor: '87ceeb',
+      firstBound: false
+    });
+    new PirticleFontDrawer('top_canvas3', 'Iron Sand', {
+      fontStyles: {'font-family':'Times New Roman', 'font-size': '100px'},
+      textureUrl: 'img/bg.jpg'
+    });
+    new PirticleFontDrawer('top_canvas4', '　吾輩は猫である。\n\
 　どこで生れたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶して\n\
 いる。吾輩はここで始めて人間というものを見た。しかもあとで聞くとそれは書生という人間中で一番獰悪な種族\n\
 であったそうだ。この書生というのは時々我々を捕（つかま）えて煮て食うという話である。しかしその当時は何\n\
@@ -37,14 +36,11 @@
 の顔がつるつるしてまるで薬缶だ。その後猫にもだいぶ逢ったがこんな片輪には一度も出会わした事がない。のみ\n\
 ならず顔の真中があまりに突起している。そうしてその穴の中から時々ぷうぷうと煙を吹く。どうも咽せぽくて実\n\
 に弱った。これが人間の飲む煙草というものである事はようやくこの頃知った。 ', {
-        fontStyles: {'font-family':'Times New Roman', 'font-size': '14px'},
-        homeForceRang: [190, 100],
-          offsetX: 20,
-          offsetY: 30
-      });
-    }
-
-    window.onload = init;
+      fontStyles: {'font-family':'Times New Roman', 'font-size': '14px'},
+      homeForceRang: [190, 100],
+      offsetX: 20,
+      offsetY: 30
+    });
   </script>
 </head>
 <body>
