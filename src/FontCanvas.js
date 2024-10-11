@@ -65,7 +65,8 @@ export class FontCanvas {
     this.height = height;
     this.canvas.width = width;
     this.canvas.height = height;
-    this.context.textBaseline = 'hanging';
+    this.context.textBaseline = 'top';
+    this.context.textAlign = 'left';
     this.context.fillStyle = 'red';
   }
 
@@ -98,12 +99,23 @@ export class FontCanvas {
       });
     });
   }
-
+  
+  // フォントサイズを取得
+  getFontSize(context) {
+    const font = context.font;
+    const fontSize = parseInt(font.match(/\d+px/)[0], 10);
+    return fontSize;
+  }
+  
   // テキストをキャンバスに描画
   renderText() {
-    let y = 2;
+    let y = -1000;
     for (const text of this.texts) {
       this.context.font = this.fontText;
+      if (y == -1000) { // yの位置を調整
+        const metrics = this.context.measureText(text);
+        y = this.getFontSize(this.context) - metrics.fontBoundingBoxDescent;
+      }
       this.context.fillText(text, 0, y);
       y += this.getTextSize(text)[1];
     }
