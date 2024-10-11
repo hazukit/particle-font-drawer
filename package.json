@@ -4,7 +4,7 @@
   "description": "A particle font drawer system.",
   "main": "dist/bundle.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --mode production",
     "test": "echo \"No tests specified\""
   },
   "keywords": [
