@@ -57,6 +57,12 @@ export const particleUtils = {
         };
         img.onerror = reject;
       });
+    },
+    
+    // フォントサイズを取得
+    getFontSize(fontText) {
+      const fontSize = parseInt(fontText.match(/\d+px/)[0], 10);
+      return fontSize;
     }
   }
 };

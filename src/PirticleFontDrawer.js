@@ -36,6 +36,7 @@ export class PirticleFontDrawer {
     this.mouseY = -1000;
     this.dots = [];
     this.rgba = particleUtils.common.colorToHex(this.textColor);
+    this.isMouseDown = false;
 
     // フォントキャンバスのセットアップ
     const canvasFont = new FontCanvas(text, this.fontStyles, this.fontUrl, () => {
@@ -114,7 +115,6 @@ export class PirticleFontDrawer {
   onMouseMove(x, y) {
     this.mouseX = x,
     this.mouseY = y;
-//    console.log(`M X=${this.mouseX}, Y=${this.mouseY}`);
   }
 
   // マウスがキャンバス外に出たとき

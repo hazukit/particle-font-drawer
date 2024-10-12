@@ -1,3 +1,5 @@
+import { particleUtils } from '../src/particleUtils';
+
 //フォントをキャンバスに描画し、その結果を画像のバイトデータとして取得するクラス
 export class FontCanvas {
   constructor(text, fontStyles = {}, fontUrl = null, completeFunc = () => {}) {
@@ -99,14 +101,7 @@ export class FontCanvas {
       });
     });
   }
-  
-  // フォントサイズを取得
-  getFontSize(context) {
-    const font = context.font;
-    const fontSize = parseInt(font.match(/\d+px/)[0], 10);
-    return fontSize;
-  }
-  
+
   // テキストをキャンバスに描画
   renderText() {
     let y = -1000;
@@ -114,7 +109,7 @@ export class FontCanvas {
       this.context.font = this.fontText;
       if (y == -1000) { // yの位置を調整
         const metrics = this.context.measureText(text);
-        y = this.getFontSize(this.context) - metrics.fontBoundingBoxDescent;
+        y = particleUtils.common.getFontSize(this.fontText) - metrics.fontBoundingBoxDescent;
       }
       this.context.fillText(text, 0, y);
       y += this.getTextSize(text)[1];
