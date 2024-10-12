@@ -1,4 +1,4 @@
-import { particleUtils } from '../src/particleUtils';
+import { particleUtils } from './particleUtils.js';
 
 //フォントをキャンバスに描画し、その結果を画像のバイトデータとして取得するクラス
 export class FontCanvas {
