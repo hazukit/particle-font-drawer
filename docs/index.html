@@ -13,12 +13,6 @@
     new PirticleFontDrawer('top_canvas1', 'Click Here', {
       fontStyles: {'font-family':'Times New Roman', 'font-size': '100px'}
     });
-    new PirticleFontDrawer('top_canvas2', 'Web Font', {
-      fontStyles: {'font-family':'Candal', 'font-size': '100px'},
-      fontUrl: 'https://fonts.googleapis.com/css?family=Candal',
-      textColor: '87ceeb',
-      firstBound: false
-    });
     new PirticleFontDrawer('top_canvas3', 'Iron Sand', {
       fontStyles: {'font-family':'Times New Roman', 'font-size': '100px'},
       textureUrl: 'img/bg.jpg'
@@ -38,6 +32,14 @@
       offsetX: 20,
       offsetY: 30
     });
+    function webfont() {
+      new PirticleFontDrawer('top_canvas2', 'Web Font', {
+        fontStyles: { 'font-family': 'Candal', 'font-size': '100px' },
+        textColor: '87ceeb',
+        firstBound: false
+      });
+    }
+    document.fonts.ready.then(webfont);
   </script>
 </head>
 <body>
@@ -56,14 +58,29 @@
 
     <section class="demo-section">
       <h2>Use Web Font</h2>
-      <pre><code>
+<pre><code>
+  &lt;!-- Link to Google Fonts stylesheet for the Candal font --&gt;
+  &lt;link href="https://fonts.googleapis.com/css?family=Candal" rel="stylesheet" type="text/css"&gt;
+
+  &lt;script type="module"&gt;
+    function webfont() {
       new PirticleFontDrawer('top_canvas2', 'Web Font', {
-        fontStyles: {'font-family':'Candal', 'font-size': '100px'},
-        fontUrl: 'https://fonts.googleapis.com/css?family=Candal',
-        textColor: '87ceeb',
-        firstBound: false
+        fontStyles: { 'font-family': 'Candal', 'font-size': '100px' },  // Set font family and size
+        textColor: '87ceeb',  // Set text color
+        firstBound: false  // Disable first bound
       });
-      </code></pre>
+    }
+    document.fonts.ready.then(webfont);  // Run webfont after fonts are loaded
+  &lt;/script&gt;
+
+  &lt;!-- Hidden element to preload the Candal font. Without this, the WebFont may not load in some cases --&gt;
+  &lt;div style="font-family: 'Candal', sans-serif; font-size: 0; visibility: hidden;"&gt;
+    Hidden Font Preload
+  &lt;/div&gt;
+</code></pre>
+      <div style="font-family: 'Candal', sans-serif; font-size: 0; visibility: hidden;">
+        Hidden Font Preload
+      </div>
       <canvas id="top_canvas2" width="530" height="100"></canvas>
     </section>
 

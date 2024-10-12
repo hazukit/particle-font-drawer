@@ -16,7 +16,6 @@ export class PirticleFontDrawer {
       fontStyles: {},          // フォントのスタイル設定 例: {'font-family': 'Arial', 'font-size': '20px'}
       dampForceRange: [5, 15], // クリックした時に跳ねる力の範囲（パーティクル毎にこの範囲内の乱数が設定される）
       homeForceRange: [3, 9],  // ドットが元の位置に戻る力の範囲
-      fontUrl: null,           // Webフォントを読み込むためのURL
       textureUrl: null,        // ドットの色を画像から取得する際のテクスチャ画像のURL
       force: 3,                // 通常時にドットにかかる力
       clickedForce: 200,       // クリックした時にドットにかかる力
@@ -39,7 +38,7 @@ export class PirticleFontDrawer {
     this.isMouseDown = false;
 
     // フォントキャンバスのセットアップ
-    const canvasFont = new FontCanvas(text, this.fontStyles, this.fontUrl, () => {
+    const canvasFont = new FontCanvas(text, this.fontStyles, () => {
       this.loadFontAndCreateDots(canvasFont);
     });
 

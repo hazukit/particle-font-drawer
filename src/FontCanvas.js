@@ -2,11 +2,10 @@ import { particleUtils } from './particleUtils.js';
 
 //フォントをキャンバスに描画し、その結果を画像のバイトデータとして取得するクラス
 export class FontCanvas {
-  constructor(text, fontStyles = {}, fontUrl = null, completeFunc = () => {}) {
+  constructor(text, fontStyles = {}, completeFunc = () => {}) {
     this.texts = text.split("\n");             // テキストを改行分割
     this.fontStyles = fontStyles;              // フォントスタイルオプション
     this.fontText = this.getText(fontStyles);  // スタイルからスタイル文字列を生成
-    this.fontUrl = fontUrl;                    // 外部フォントURL（任意）
     this.completeFunc = completeFunc;          // 完了時のコールバック関数
 
     this.canvas = document.createElement('canvas');  // キャンバス要素作成
@@ -15,20 +14,9 @@ export class FontCanvas {
 
   // フォントのロードとテキストの描画を処理
   load() {
-    if (this.fontUrl) {
-      this.loadWebFont(this.fontUrl).then(() => {
-        this.initCanvas();
-        this.renderText();
-        this.completeFunc();
-      }).catch(() => {
-        console.error("Failed to load the font.");
-        this.completeFunc();
-      });
-    } else {
-      this.initCanvas();
-      this.renderText();
-      this.completeFunc();
-    }
+    this.initCanvas();
+    this.renderText();
+    this.completeFunc();
   }
 
   // フォントのスタイル文字列を生成
@@ -84,22 +72,6 @@ export class FontCanvas {
     }
 
     return [maxWidth, totalHeight];
-  }
-
-  // フォントをWebから非同期でロード
-  loadWebFont(fontUrl, fontFamily) {
-    return new Promise((resolve, reject) => {
-      // Webフォントを読み込むための<link>タグを作成
-      const link = document.createElement('link');
-      link.href = fontUrl;
-      link.rel = 'stylesheet';
-      document.head.appendChild(link);
-      document.fonts.load(`1em ${fontFamily}`).then(() => {
-        resolve();
-      }).catch((e) => {
-        reject(e);
-      });
-    });
   }
 
   // テキストをキャンバスに描画
