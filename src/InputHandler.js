@@ -22,10 +22,10 @@ export class InputHandler {
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     if (isTouchDevice) {
       // タッチイベントの追加
-      this.canvas.addEventListener('touchmove', this.handleMove.bind(this), false);
-      this.canvas.addEventListener('touchstart', this.handleDown.bind(this), false);
-      this.canvas.addEventListener('touchend', this.handleUpAndLeave.bind(this), false);
-      this.canvas.addEventListener('touchcancel', this.handleLeave.bind(this), false);
+      this.canvas.addEventListener('touchmove', this.handleMove.bind(this), { passive: true });
+      this.canvas.addEventListener('touchstart', this.handleDown.bind(this), { passive: true });
+      this.canvas.addEventListener('touchend', this.handleUpAndLeave.bind(this), { passive: true });
+      this.canvas.addEventListener('touchcancel', this.handleLeave.bind(this), { passive: true });
     } else {
       // マウスイベントの追加
       this.canvas.addEventListener('mousemove', this.handleMove.bind(this), false);
