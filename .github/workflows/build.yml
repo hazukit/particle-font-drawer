@@ -26,3 +26,5 @@ jobs:
           git add dist
           git commit -m "Build dist on commit" || echo "No changes to commit"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
